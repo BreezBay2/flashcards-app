@@ -1,0 +1,27 @@
+{
+    "name": "flashcards-app",
+    "version": "1.0.0",
+    "description": "Some description",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "dev": "nodemon backend/server.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/BreezBay2/flashcards-app.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/BreezBay2/flashcards-app/issues"
+    },
+    "homepage": "https://github.com/BreezBay2/flashcards-app#readme",
+    "devDependencies": {
+        "nodemon": "^3.1.9"
+    },
+    "dependencies": {
+        "express": "^4.21.2"
+    }
+}
