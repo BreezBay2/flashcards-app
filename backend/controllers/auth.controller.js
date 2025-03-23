@@ -74,7 +74,33 @@ export const signup = async (req, res) => {
 };
 
 export const login = async (req, res) => {
-    res.send("Login");
+    try {
+        const { username, password } = req.body;
+        const user = await prisma.user.findUnique({ where: { username } });
+
+        const passwordCheck = await bcryptjs.compare(
+            password,
+            user?.password || ""
+        );
+
+        if (!user || !passwordCheck) {
+            return res
+                .status(400)
+                .json({ error: "Invalid username or password" });
+        }
+
+        generateTokenAndSetCookie(user.id, res);
+
+        res.status(200).json({
+            id: user.id,
+            username: user.username,
+            fullname: user.fullname,
+            email: user.email,
+        });
+    } catch (error) {
+        console.log("Something went wrong logging in: ", error.message);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
 };
 
 export const logout = async (req, res) => {
