@@ -94,3 +94,26 @@ export const getAllDecks = async (req, res) => {
         res.status(500).json({ error: "Internal Server Error" });
     }
 };
+
+export const getDeck = async (req, res) => {
+    try {
+        const deck = await prisma.deck.findUnique({
+            where: { id: req.params.id },
+        });
+
+        if (!deck) {
+            return res.status(404).json({ error: "Deck not found" });
+        }
+
+        if (deck.userId !== req.user.id) {
+            return res
+                .status(401)
+                .json({ error: "This is not your deck, homie" });
+        }
+
+        res.status(200).json(deck);
+    } catch (error) {
+        console.log("Error occured trying to get a deck", error.message);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+};
