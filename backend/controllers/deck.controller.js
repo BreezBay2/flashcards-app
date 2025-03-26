@@ -1,0 +1,63 @@
+import prisma from "../db/prisma.js";
+
+export const createDeck = async (req, res) => {
+    try {
+        const { name, description, studyType } = req.body;
+        const userId = req.user.id;
+
+        const user = await prisma.user.findUnique({ where: { id: userId } });
+
+        if (!user) {
+            return res.status(404).json({ error: "User not found" });
+        }
+
+        if (!name || !studyType) {
+            return res
+                .status(400)
+                .json({ error: "Required fields must be filled" });
+        }
+
+        const newDeck = await prisma.deck.create({
+            data: {
+                name,
+                description,
+                studyType,
+                userId,
+            },
+        });
+
+        if (newDeck) {
+            res.status(201).json({
+                id: newDeck.id,
+                name: newDeck.name,
+                description: newDeck.description,
+                studyType: newDeck.studyType,
+                userId: newDeck.userId,
+            });
+        } else {
+            return res.status(400).json({ error: "Invalid Deck Data" });
+        }
+    } catch (error) {
+        console.log("Error occured while creating a deck", error.message);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+};
+
+export const deleteDeck = async (req, res) => {
+    try {
+    } catch (error) {
+        console.log("Error occured while deleting a deck", error.message);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+};
+
+export const getAllDecks = async (req, res) => {
+    try {
+    } catch (error) {
+        console.log(
+            "Error occured while trying to get all decks",
+            error.message
+        );
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+};
