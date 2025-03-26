@@ -72,6 +72,20 @@ export const deleteDeck = async (req, res) => {
 
 export const getAllDecks = async (req, res) => {
     try {
+        const userId = req.user.id;
+        const user = await prisma.user.findUnique({ where: { id: userId } });
+
+        if (!user) {
+            return res.status(404).json({ error: "User not found" });
+        }
+
+        const decks = await prisma.deck.findMany({ where: { userId } });
+
+        if (decks.length === 0) {
+            return res.status(200).json([]);
+        }
+
+        res.status(200).json(decks);
     } catch (error) {
         console.log(
             "Error occured while trying to get all decks",

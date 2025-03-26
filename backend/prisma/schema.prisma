@@ -31,7 +31,7 @@ model Deck {
   createdAt DateTime @default(now())
   lastOpened DateTime @updatedAt
   
-  userId String @unique
+  userId String
   user User @relation(fields: [userId], references: [id])
 
   cards Card[]
