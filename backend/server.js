@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 
 import authRoutes from "./routes/auth.routes.js";
 import deckRoutes from "./routes/deck.routes.js";
+import cardRoutes from "./routes/card.routes.js";
 
 dotenv.config();
 
@@ -18,6 +19,7 @@ app.use(cookieParser());
 
 app.use("/api/auth", authRoutes);
 app.use("/api/decks", deckRoutes);
+app.use("/api/cards", cardRoutes);
 
 app.listen(PORT, () => {
     console.log("Server up and running on Port", PORT);

@@ -44,11 +44,11 @@ model Card {
   createdAt DateTime @default(now())
 
   lastReview DateTime @default(now())
-  nextReview DateTime
+  nextReview DateTime @default(now())
   reviewCount Int @default(0)
-  interval Int
+  interval Int @default(0)
   easeFactor Float @default(2.5)
 
-  deckId String @unique
+  deckId String
   deck Deck @relation(fields: [deckId], references: [id])
 }
