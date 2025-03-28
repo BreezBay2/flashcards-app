@@ -53,7 +53,9 @@ const HomePage = () => {
                 }
 
                 return data;
-            } catch (error) {}
+            } catch (error) {
+                throw new Error(error);
+            }
         },
     });
 

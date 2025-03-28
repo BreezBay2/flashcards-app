@@ -33,6 +33,21 @@ export const createCard = async (req, res) => {
     }
 };
 
-export const getAllCards = async (req, res) => {};
+export const getAllCards = async (req, res) => {
+    try {
+        const cards = await prisma.card.findMany({
+            where: { deckId: req.params.id },
+        });
+
+        if (cards.length === 0) {
+            return res.status(200).json([]);
+        }
+
+        res.status(200).json(cards);
+    } catch (error) {
+        console.log("Error occured while trying to get all cards");
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+};
 
 export const deleteCard = async (req, res) => {};

@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import React from "react";
+import CardTable from "../../components/CardTable";
 
 const DeckPage = () => {
     const { id } = useParams();
@@ -32,6 +33,7 @@ const DeckPage = () => {
         <div>
             <h1>DeckPage</h1>
             <p>{deck?.name}</p>
+            <CardTable deckId={id} />
         </div>
     );
 };
