@@ -3,6 +3,7 @@ import HomePage from "./pages/home/HomePage";
 import SignUpPage from "./pages/auth/signup/SignUpPage";
 import LoginPage from "./pages/auth/login/LoginPage";
 import { useQuery } from "@tanstack/react-query";
+import DeckPage from "./pages/deck/DeckPage";
 
 function App() {
     const { data: authUser, isLoading } = useQuery({
@@ -54,6 +55,10 @@ function App() {
                 <Route
                     path="/login"
                     element={!authUser ? <LoginPage /> : <Navigate to="/" />}
+                />
+                <Route
+                    path="/deck/:id"
+                    element={authUser ? <DeckPage /> : <Navigate to="/login" />}
                 />
             </Routes>
         </div>
