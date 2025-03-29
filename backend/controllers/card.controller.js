@@ -50,4 +50,33 @@ export const getAllCards = async (req, res) => {
     }
 };
 
-export const deleteCard = async (req, res) => {};
+export const deleteCard = async (req, res) => {
+    try {
+        const card = await prisma.card.findUnique({
+            where: { id: req.params.id },
+        });
+
+        if (!card) {
+            return res.status(404).json({ error: "Card not found" });
+        }
+
+        const deck = await prisma.deck.findUnique({
+            where: { id: card.deckId },
+        });
+
+        if (deck.userId !== req.user.id) {
+            return res
+                .status(401)
+                .json({ error: "You are not authorized to delete this card" });
+        }
+
+        await prisma.card.delete({
+            where: { id: req.params.id },
+        });
+
+        res.status(200).json({ message: "Card deleted successfully" });
+    } catch (error) {
+        console.log("Error occured while deleting a card", error.message);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+};
