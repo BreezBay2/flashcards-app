@@ -70,6 +70,34 @@ export const deleteDeck = async (req, res) => {
     }
 };
 
+export const updateDeck = async (req, res) => {
+    try {
+        const deck = await prisma.deck.findUnique({
+            where: { id: req.params.id },
+        });
+
+        if (!deck) {
+            return res.status(404).json({ error: "Deck not found" });
+        }
+
+        if (deck.userId !== req.user.id) {
+            return res
+                .status(401)
+                .json({ error: "Your are not authorized to edit this deck" });
+        }
+
+        await prisma.deck.update({
+            where: { id: req.params.id },
+            data: req.body,
+        });
+
+        res.status(200).json(deck);
+    } catch (error) {
+        console.log("Error occured while updating a deck", error.message);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+};
+
 export const getAllDecks = async (req, res) => {
     try {
         const userId = req.user.id;

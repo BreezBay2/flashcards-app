@@ -35,6 +35,14 @@ export const createCard = async (req, res) => {
 
 export const getAllCards = async (req, res) => {
     try {
+        const deck = await prisma.deck.findUnique({
+            where: { id: req.params.id },
+        });
+
+        if (deck.userId !== req.user.id) {
+            return res.status(401).json({ error: "This is not your deck" });
+        }
+
         const cards = await prisma.card.findMany({
             where: { deckId: req.params.id },
         });
@@ -46,6 +54,38 @@ export const getAllCards = async (req, res) => {
         res.status(200).json(cards);
     } catch (error) {
         console.log("Error occured while trying to get all cards");
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+};
+
+export const updateCard = async (req, res) => {
+    try {
+        const card = await prisma.card.findUnique({
+            where: { id: req.params.id },
+        });
+
+        if (!card) {
+            return res.status(404).json({ error: "Card not found" });
+        }
+
+        const deck = await prisma.deck.findUnique({
+            where: { id: card.deckId },
+        });
+
+        if (deck.userId !== req.user.id) {
+            return res
+                .status(401)
+                .json({ error: "You are not authorized to edit this card" });
+        }
+
+        await prisma.card.update({
+            where: { id: req.params.id },
+            data: req.body,
+        });
+
+        res.status(200).json(card);
+    } catch (error) {
+        console.log("Error occured while trying to edit card", error.message);
         res.status(500).json({ error: "Internal Server Error" });
     }
 };
