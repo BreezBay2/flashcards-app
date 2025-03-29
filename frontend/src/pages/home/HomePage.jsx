@@ -1,8 +1,10 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import React from "react";
+import React, { useState } from "react";
 import DeckCard from "../../components/DeckCard";
+import CreateDeckModal from "../../components/CreateDeckModal";
 
 const HomePage = () => {
+    const [modalOpen, setModalOpen] = useState(false);
     const queryClient = useQueryClient();
 
     const {
@@ -67,6 +69,9 @@ const HomePage = () => {
 
             {!isLoading && !isRefetching && decks && (
                 <div>
+                    <button onClick={() => setModalOpen(true)}>
+                        Create New Deck
+                    </button>
                     <ul>
                         {decks.map((deck) => (
                             <DeckCard key={deck.id} deck={deck} />
@@ -83,6 +88,14 @@ const HomePage = () => {
             >
                 Logout
             </button>
+
+            {modalOpen && (
+                <CreateDeckModal
+                    closeModal={() => {
+                        setModalOpen(false);
+                    }}
+                />
+            )}
         </div>
     );
 };
