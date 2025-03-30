@@ -66,12 +66,10 @@ const HomePage = () => {
             <h1>HomePage</h1>
             <h2>Welcome back {authUser?.username}</h2>
             <h3>Decks</h3>
+            <button onClick={() => setModalOpen(true)}>Create New Deck</button>
 
             {!isLoading && !isRefetching && decks && (
                 <div>
-                    <button onClick={() => setModalOpen(true)}>
-                        Create New Deck
-                    </button>
                     <ul>
                         {decks.map((deck) => (
                             <DeckCard key={deck.id} deck={deck} />

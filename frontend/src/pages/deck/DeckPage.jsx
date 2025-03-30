@@ -1,9 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
-import React from "react";
+import React, { useState } from "react";
 import CardTable from "../../components/CardTable";
+import CreateCardModal from "../../components/CreateCardModal";
 
 const DeckPage = () => {
+    const [modalOpen, setModalOpen] = useState(false);
     const { id } = useParams();
 
     const {
@@ -33,7 +35,21 @@ const DeckPage = () => {
         <div>
             <h1>DeckPage</h1>
             <p>{deck?.name}</p>
-            <CardTable deckId={id} />
+            <button onClick={() => setModalOpen(true)}>Create New Card</button>
+            {!isLoading && !isRefetching && deck && (
+                <div>
+                    <CardTable deckId={id} />
+                </div>
+            )}
+
+            {modalOpen && (
+                <CreateCardModal
+                    closeModal={() => {
+                        setModalOpen(false);
+                    }}
+                    deckId={id}
+                />
+            )}
         </div>
     );
 };
