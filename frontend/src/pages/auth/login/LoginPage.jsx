@@ -1,6 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import "../../../styles/LoginPage.css";
 
 const LoginPage = () => {
     const [formData, setFormData] = useState({
@@ -49,32 +50,37 @@ const LoginPage = () => {
     };
 
     return (
-        <div>
-            <h1>LoginPage</h1>
-            <form onSubmit={handleSubmit}>
-                <h2>Login</h2>
-                <input
-                    type="text"
-                    placeholder="Username"
-                    name="username"
-                    onChange={handleInputChange}
-                    value={formData.username}
-                />
-                <input
-                    type="password"
-                    placeholder="Password"
-                    name="password"
-                    onChange={handleInputChange}
-                    value={formData.password}
-                />
-                <button>{isPending ? "Loading..." : "Login"}</button>
-                {isError && <p>{error.message}</p>}
-            </form>
-            <div>
-                <p>Don't have an account?</p>
-                <Link to="/signup">
-                    <button>Sign Up</button>
-                </Link>
+        <div className="page">
+            <div className="container">
+                <h1>Login</h1>
+                <form className="login-form" onSubmit={handleSubmit}>
+                    <label>Username</label>
+                    <input
+                        type="text"
+                        placeholder="Username"
+                        name="username"
+                        onChange={handleInputChange}
+                        value={formData.username}
+                    />
+                    <label>Password</label>
+                    <input
+                        type="password"
+                        placeholder="Password"
+                        name="password"
+                        onChange={handleInputChange}
+                        value={formData.password}
+                    />
+                    <button className="login-button">
+                        {isPending ? "Loading..." : "Login"}
+                    </button>
+                    {isError && <p>{error.message}</p>}
+                </form>
+                <div className="signup-container">
+                    <p>Don't have an account?</p>
+                    <Link to="/signup">
+                        <button>Sign Up</button>
+                    </Link>
+                </div>
             </div>
         </div>
     );

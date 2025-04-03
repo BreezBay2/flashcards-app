@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import React, { useState } from "react";
 import CardTable from "../../components/CardTable";
 import CreateCardModal from "../../components/CreateCardModal";
+import "../../styles/DeckPage.css";
 
 const DeckPage = () => {
     const [modalOpen, setModalOpen] = useState(false);
@@ -32,12 +33,16 @@ const DeckPage = () => {
     });
 
     return (
-        <div>
-            <h1>DeckPage</h1>
-            <p>{deck?.name}</p>
-            <button onClick={() => setModalOpen(true)}>Create New Card</button>
+        <div className="page">
+            <h1>{deck?.name}</h1>
+            <button
+                className="create-button"
+                onClick={() => setModalOpen(true)}
+            >
+                Create New Card
+            </button>
             {!isLoading && !isRefetching && deck && (
-                <div>
+                <div className="cards-container">
                     <CardTable deckId={id} />
                 </div>
             )}

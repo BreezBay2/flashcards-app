@@ -1,40 +1,11 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import React, { useState } from "react";
 import DeckCard from "../../components/DeckCard";
 import CreateDeckModal from "../../components/CreateDeckModal";
+import "../../styles/HomePage.css";
 
 const HomePage = () => {
     const [modalOpen, setModalOpen] = useState(false);
-    const queryClient = useQueryClient();
-
-    const {
-        mutate: logout,
-        isPending,
-        isError,
-        error,
-    } = useMutation({
-        mutationFn: async () => {
-            try {
-                const res = await fetch("/api/auth/logout", {
-                    method: "POST",
-                });
-
-                const authUser = await res.json();
-
-                if (!res.ok) {
-                    throw new Error(authUser.error || "Something went wrong");
-                }
-            } catch (error) {
-                throw new Error(error);
-            }
-        },
-        onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: ["authUser"] });
-        },
-        onError: () => {
-            console.log("Logout failed");
-        },
-    });
 
     const { data: authUser } = useQuery({ queryKey: ["authUser"] });
 
@@ -62,30 +33,26 @@ const HomePage = () => {
     });
 
     return (
-        <div>
+        <div className="homepage">
             <h1>HomePage</h1>
             <h2>Welcome back {authUser?.username}</h2>
             <h3>Decks</h3>
-            <button onClick={() => setModalOpen(true)}>Create New Deck</button>
+            <button
+                className="create-button"
+                onClick={() => setModalOpen(true)}
+            >
+                Create New Deck
+            </button>
 
             {!isLoading && !isRefetching && decks && (
-                <div>
-                    <ul>
+                <div className="decks-container">
+                    <ul className="decks">
                         {decks.map((deck) => (
                             <DeckCard key={deck.id} deck={deck} />
                         ))}
                     </ul>
                 </div>
             )}
-
-            <button
-                onClick={(e) => {
-                    e.preventDefault();
-                    logout();
-                }}
-            >
-                Logout
-            </button>
 
             {modalOpen && (
                 <CreateDeckModal

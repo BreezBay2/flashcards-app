@@ -1,6 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import "../../../styles/SignUpPage.css";
 
 const SignUpPage = () => {
     const [formData, setFormData] = useState({
@@ -67,11 +68,11 @@ const SignUpPage = () => {
     };
 
     return (
-        <div>
-            <div>
-                <h1>SignUpPage</h1>
-                <form onSubmit={handleSubmit}>
-                    <h2>Create an Account</h2>
+        <div className="page">
+            <div className="container">
+                <h1>Create an Account</h1>
+                <form className="signup-form" onSubmit={handleSubmit}>
+                    <label>E-Mail</label>
                     <input
                         type="email"
                         placeholder="E-Mail"
@@ -79,6 +80,7 @@ const SignUpPage = () => {
                         onChange={handleInputChange}
                         value={formData.email}
                     />
+                    <label>Username</label>
                     <input
                         type="text"
                         placeholder="Username"
@@ -86,6 +88,7 @@ const SignUpPage = () => {
                         onChange={handleInputChange}
                         value={formData.username}
                     />
+                    <label>Full Name</label>
                     <input
                         type="text"
                         placeholder="Full Name"
@@ -93,6 +96,7 @@ const SignUpPage = () => {
                         onChange={handleInputChange}
                         value={formData.fullname}
                     />
+                    <label>Password</label>
                     <input
                         type="password"
                         placeholder="Password"
@@ -100,6 +104,7 @@ const SignUpPage = () => {
                         onChange={handleInputChange}
                         value={formData.password}
                     />
+                    <label>Confirm Password</label>
                     <input
                         type="password"
                         placeholder="Confirm Password"
@@ -110,10 +115,10 @@ const SignUpPage = () => {
                     <button>{isPending ? "Is Loading..." : "Sign Up"}</button>
                     {isError && <p>{error.message}</p>}
                 </form>
-                <div>
+                <div className="login-container">
                     <p>Already have an account?</p>
                     <Link to="/login">
-                        <button>Sign In</button>
+                        <button>Login</button>
                     </Link>
                 </div>
             </div>

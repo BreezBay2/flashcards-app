@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./CreateDeckModal.css";
+import "../styles/CreateModal.css";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 const CreateCardModal = ({ deckId, closeModal }) => {
@@ -53,7 +53,7 @@ const CreateCardModal = ({ deckId, closeModal }) => {
             }}
         >
             <div className="modal">
-                <form>
+                <form className="create-form">
                     <label>Front</label>
                     <textarea
                         name="frontText"

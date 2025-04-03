@@ -1,0 +1,47 @@
+.table {
+    display: block;
+    table-layout: auto;
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: 10px;
+    white-space: nowrap;
+    width: 70em;
+    max-width: 80%;
+    margin: auto;
+    overflow-x: auto;
+}
+
+.table th,
+.table td {
+    padding: 12px 20px;
+    text-align: left;
+}
+
+.table td {
+    border-top: 0.5px solid #ddd;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+table tbody tr:hover {
+    background-color: #eee;
+}
+
+.expand {
+    width: 50%;
+}
+
+.action-button {
+    padding: 8px 12px;
+    font-size: medium;
+    font-family: "Nunito";
+    border: none;
+    background-color: #2c5f2d;
+    border-radius: 12px;
+    color: white;
+}
+
+.action-button:hover {
+    cursor: pointer;
+    background-color: #4f9250;
+}

@@ -1,0 +1,77 @@
+.page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40vw;
+    height: 40vw;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: white;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    font-size: large;
+    color: rgb(73, 73, 73);
+}
+
+.login-form label {
+    margin-top: 15px;
+}
+
+.login-form input {
+    margin: 5px 0;
+    padding: 10px;
+    border: 1px solid #7fce80;
+    border-radius: 12px;
+}
+
+.login-button {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding: 10px 0px;
+    border: none;
+    border-radius: 12px;
+    background-color: #2c5f2d;
+    color: white;
+    font-size: large;
+    font-family: "Nunito";
+}
+
+.login-button:hover {
+    cursor: pointer;
+    background-color: #4f9250;
+}
+
+.signup-container {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    margin-top: 20px;
+}
+
+.signup-container button {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px 0px;
+    border: none;
+    border-radius: 12px;
+    background-color: #2c5f2d;
+    color: white;
+    font-size: large;
+    font-family: "Nunito";
+}
+
+.signup-container button:hover {
+    cursor: pointer;
+    background-color: #4f9250;
+}

@@ -1,0 +1,15 @@
+.deckcard {
+    background-color: #8cd790;
+    border-radius: 16px;
+    padding: 0.5rem 2rem;
+    color: #2c5f2d;
+}
+
+.deckcard:hover {
+    transform: translateY(-5px);
+    background-color: #a7eca5;
+}
+
+.deck-link {
+    text-decoration: none;
+}

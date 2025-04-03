@@ -4,6 +4,8 @@ import SignUpPage from "./pages/auth/signup/SignUpPage";
 import LoginPage from "./pages/auth/login/LoginPage";
 import { useQuery } from "@tanstack/react-query";
 import DeckPage from "./pages/deck/DeckPage";
+import Navbar from "./components/Navbar";
+import "./App.css";
 
 function App() {
     const { data: authUser, isLoading } = useQuery({
@@ -34,15 +36,15 @@ function App() {
 
     if (isLoading) {
         return (
-            <div>
+            <div className="loading">
                 <h1>Is Loading...</h1>
             </div>
         );
     }
 
     return (
-        <div>
-            {authUser && <h1>Logged In</h1>}
+        <div className="App">
+            {authUser && <Navbar />}
             <Routes>
                 <Route
                     path="/"

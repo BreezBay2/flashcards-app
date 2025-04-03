@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./CreateDeckModal.css";
+import "../styles/CreateModal.css";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 const CreateDeckModal = ({ closeModal }) => {
@@ -54,7 +54,7 @@ const CreateDeckModal = ({ closeModal }) => {
             }}
         >
             <div className="modal">
-                <form>
+                <form className="create-form">
                     <label>Name</label>
                     <input
                         name="name"

@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
+import "../styles/CardTable.css";
 
 const CardTable = ({ deckId }) => {
     const {
@@ -27,36 +28,35 @@ const CardTable = ({ deckId }) => {
     });
 
     return (
-        <div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Number</th>
-                        <th>Front</th>
-                        <th>Back</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {cards
-                        ? cards.map((card, index) => {
-                              console.log(cards);
-                              return (
-                                  <tr key={index}>
-                                      <td>{index}</td>
-                                      <td>{card.frontText}</td>
-                                      <td>{card.backText}</td>
-                                      <td>
-                                          <span>Delete </span>
-                                          <span>Edit</span>
-                                      </td>
-                                  </tr>
-                              );
-                          })
-                        : null}
-                </tbody>
-            </table>
-        </div>
+        <table className="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th className="expand">Front</th>
+                    <th className="expand">Back</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {cards
+                    ? cards.map((card, index) => {
+                          console.log(cards);
+                          return (
+                              <tr key={index}>
+                                  <td>{index + 1}</td>
+                                  <td className="expand">{card.frontText}</td>
+                                  <td className="expand">{card.backText}</td>
+                                  <td>
+                                      <button className="action-button">
+                                          Delete
+                                      </button>
+                                  </td>
+                              </tr>
+                          );
+                      })
+                    : null}
+            </tbody>
+        </table>
     );
 };
 
