@@ -8,7 +8,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .modal {
@@ -48,5 +48,5 @@
 }
 
 .error {
-    color: red;
+    color: #f12727;
 }

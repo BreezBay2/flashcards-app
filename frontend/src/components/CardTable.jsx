@@ -1,8 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
+import React, { useState } from "react";
 import "../styles/CardTable.css";
+import DeleteCardModal from "./DeleteCardModal";
 
 const CardTable = ({ deckId }) => {
+    const [modalOpen, setModalOpen] = useState(false);
+    const [cardId, setCardId] = useState("");
+
     const {
         data: cards,
         isLoading,
@@ -19,7 +23,6 @@ const CardTable = ({ deckId }) => {
                     throw new Error(data.error || "Something went wrong");
                 }
 
-                console.log(data);
                 return data;
             } catch (error) {
                 throw new Error(error);
@@ -28,35 +31,52 @@ const CardTable = ({ deckId }) => {
     });
 
     return (
-        <table className="table">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th className="expand">Front</th>
-                    <th className="expand">Back</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {cards
-                    ? cards.map((card, index) => {
-                          console.log(cards);
-                          return (
-                              <tr key={index}>
-                                  <td>{index + 1}</td>
-                                  <td className="expand">{card.frontText}</td>
-                                  <td className="expand">{card.backText}</td>
-                                  <td>
-                                      <button className="action-button">
-                                          Delete
-                                      </button>
-                                  </td>
-                              </tr>
-                          );
-                      })
-                    : null}
-            </tbody>
-        </table>
+        <div className="table-container">
+            {cards ? (
+                <table className="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th className="expand">Front</th>
+                            <th className="expand">Back</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {cards.map((card, index) => {
+                            return (
+                                <tr key={index}>
+                                    <td>{index + 1}</td>
+                                    <td className="expand">{card.frontText}</td>
+                                    <td className="expand">{card.backText}</td>
+                                    <td>
+                                        <button
+                                            className="action-button"
+                                            onClick={() => {
+                                                setCardId(card.id);
+                                                setModalOpen(true);
+                                            }}
+                                        >
+                                            Delete
+                                        </button>
+                                    </td>
+                                </tr>
+                            );
+                        })}
+                    </tbody>
+                </table>
+            ) : (
+                <h1>This deck does not have any cards yet!</h1>
+            )}
+            {modalOpen && (
+                <DeleteCardModal
+                    closeModal={() => {
+                        setModalOpen(false);
+                    }}
+                    cardId={cardId}
+                />
+            )}
+        </div>
     );
 };
 

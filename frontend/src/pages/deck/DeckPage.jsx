@@ -41,11 +41,7 @@ const DeckPage = () => {
             >
                 Create New Card
             </button>
-            {!isLoading && !isRefetching && deck && (
-                <div className="cards-container">
-                    <CardTable deckId={id} />
-                </div>
-            )}
+            {!isLoading && !isRefetching && deck && <CardTable deckId={id} />}
 
             {modalOpen && (
                 <CreateCardModal
