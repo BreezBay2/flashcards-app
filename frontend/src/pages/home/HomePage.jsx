@@ -33,20 +33,20 @@ const HomePage = () => {
     });
 
     return (
-        <div className="homepage">
+        <div className="home-page">
             <h1>HomePage</h1>
             <h2>Welcome back {authUser?.username}</h2>
             <h3>Decks</h3>
             <button
-                className="create-button"
+                className="home-create-button"
                 onClick={() => setModalOpen(true)}
             >
                 Create New Deck
             </button>
 
             {!isLoading && !isRefetching && decks && (
-                <div className="decks-container">
-                    <ul className="decks">
+                <div className="home-decks-container">
+                    <ul className="home-decks">
                         {decks.map((deck) => (
                             <DeckCard key={deck.id} deck={deck} />
                         ))}

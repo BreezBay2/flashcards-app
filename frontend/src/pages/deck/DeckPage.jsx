@@ -35,12 +35,15 @@ const DeckPage = () => {
     return (
         <div className="page">
             <h1>{deck?.name}</h1>
-            <button
-                className="create-button"
-                onClick={() => setModalOpen(true)}
-            >
-                Create New Card
-            </button>
+            <div className="deck-page-buttons">
+                <button
+                    className="create-card-button"
+                    onClick={() => setModalOpen(true)}
+                >
+                    Create New Card
+                </button>
+                <button className="study-button">Study</button>
+            </div>
             {!isLoading && !isRefetching && deck && <CardTable deckId={id} />}
 
             {modalOpen && (

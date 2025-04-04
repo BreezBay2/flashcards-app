@@ -36,7 +36,7 @@ table tbody tr:hover {
     width: 50%;
 }
 
-.action-button {
+.card-delete-button {
     padding: 8px 12px;
     font-size: medium;
     font-family: "Nunito";
@@ -46,7 +46,7 @@ table tbody tr:hover {
     color: white;
 }
 
-.action-button:hover {
+.card-delete-button:hover {
     cursor: pointer;
     background-color: #f06464;
 }

@@ -68,8 +68,8 @@ const SignUpPage = () => {
     };
 
     return (
-        <div className="page">
-            <div className="container">
+        <div className="signup-page">
+            <div className="signup-container">
                 <h1>Create an Account</h1>
                 <form className="signup-form" onSubmit={handleSubmit}>
                     <label>E-Mail</label>
@@ -115,7 +115,7 @@ const SignUpPage = () => {
                     <button>{isPending ? "Is Loading..." : "Sign Up"}</button>
                     {isError && <p>{error.message}</p>}
                 </form>
-                <div className="login-container">
+                <div className="login-link">
                     <p>Already have an account?</p>
                     <Link to="/login">
                         <button>Login</button>

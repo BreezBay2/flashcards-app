@@ -1,4 +1,4 @@
-.nav {
+.navbar {
     position: fixed;
     top: 0;
     left: 0;
@@ -7,7 +7,7 @@
     padding: 24px;
 }
 
-.nav-div {
+.navbar-links {
     display: flex;
     align-items: center;
     justify-content: space-between;

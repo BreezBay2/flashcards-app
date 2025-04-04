@@ -1,10 +1,10 @@
-.page {
+.login-page {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.container {
+.login-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -52,14 +52,15 @@
     background-color: #4f9250;
 }
 
-.signup-container {
+.signup-link {
     display: flex;
     flex-direction: column;
     width: 60%;
     margin-top: 20px;
+    color: #494949;
 }
 
-.signup-container button {
+.signup-link button {
     width: 100%;
     margin-bottom: 10px;
     padding: 10px 0px;
@@ -71,7 +72,7 @@
     font-family: "Nunito";
 }
 
-.signup-container button:hover {
+.signup-link button:hover {
     cursor: pointer;
     background-color: #4f9250;
 }

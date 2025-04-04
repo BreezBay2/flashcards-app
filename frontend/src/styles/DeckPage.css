@@ -5,3 +5,26 @@
     align-items: center;
     color: #2c5f2d;
 }
+
+.deck-page-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 40%;
+}
+
+.create-card-button,
+.study-button {
+    background-color: #2c5f2d;
+    color: white;
+    font-family: "Nunito";
+    font-size: larger;
+    padding: 15px;
+    border: none;
+    border-radius: 16px;
+}
+
+.create-card-button:hover,
+.study-button:hover {
+    cursor: pointer;
+    background-color: #4f9250;
+}

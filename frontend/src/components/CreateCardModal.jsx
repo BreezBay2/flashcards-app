@@ -47,12 +47,13 @@ const CreateCardModal = ({ deckId, closeModal }) => {
 
     return (
         <div
-            className="modal-container"
+            className="create-modal-container"
             onClick={(e) => {
-                if (e.target.className === "modal-container") closeModal();
+                if (e.target.className === "create-modal-container")
+                    closeModal();
             }}
         >
-            <div className="modal">
+            <div className="create-modal">
                 <form className="create-form">
                     <label>Front</label>
                     <textarea
@@ -69,7 +70,9 @@ const CreateCardModal = ({ deckId, closeModal }) => {
                     <button type="submit" onClick={handleSubmit}>
                         {isPending ? "Creating Card..." : "Create Card"}
                     </button>
-                    {isError && <div className="error">{error.message}</div>}
+                    {isError && (
+                        <div className="create-error">{error.message}</div>
+                    )}
                 </form>
             </div>
         </div>

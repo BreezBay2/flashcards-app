@@ -38,8 +38,8 @@ const Navbar = () => {
     const { data: authUser } = useQuery({ queryKey: ["authUser"] });
 
     return (
-        <nav className="nav">
-            <div className="nav-div">
+        <nav className="navbar">
+            <div className="navbar-links">
                 <Link to="/" className="home-link">
                     Home
                 </Link>

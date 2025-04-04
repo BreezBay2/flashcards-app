@@ -50,8 +50,8 @@ const LoginPage = () => {
     };
 
     return (
-        <div className="page">
-            <div className="container">
+        <div className="login-page">
+            <div className="login-container">
                 <h1>Login</h1>
                 <form className="login-form" onSubmit={handleSubmit}>
                     <label>Username</label>
@@ -75,7 +75,7 @@ const LoginPage = () => {
                     </button>
                     {isError && <p>{error.message}</p>}
                 </form>
-                <div className="signup-container">
+                <div className="signup-link">
                     <p>Don't have an account?</p>
                     <Link to="/signup">
                         <button>Sign Up</button>

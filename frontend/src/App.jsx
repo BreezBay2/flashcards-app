@@ -6,6 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 import DeckPage from "./pages/deck/DeckPage";
 import Navbar from "./components/Navbar";
 import "./App.css";
+import StudyPage from "./pages/study/StudyPage";
 
 function App() {
     const { data: authUser, isLoading } = useQuery({
@@ -31,8 +32,6 @@ function App() {
         },
         retry: false,
     });
-
-    console.log(authUser);
 
     if (isLoading) {
         return (
@@ -61,6 +60,12 @@ function App() {
                 <Route
                     path="/deck/:id"
                     element={authUser ? <DeckPage /> : <Navigate to="/login" />}
+                />
+                <Route
+                    path="/study"
+                    element={
+                        authUser ? <StudyPage /> : <Navigate to="/login" />
+                    }
                 />
             </Routes>
         </div>

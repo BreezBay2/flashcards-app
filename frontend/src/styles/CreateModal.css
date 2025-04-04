@@ -1,4 +1,4 @@
-.modal-container {
+.create-modal-container {
     position: fixed;
     z-index: 1;
     left: 0;
@@ -11,7 +11,7 @@
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-.modal {
+.create-modal {
     border-radius: 10px;
     padding: 2rem;
     background-color: white;
@@ -47,6 +47,6 @@
     font-family: "Nunito";
 }
 
-.error {
+.create-error {
     color: #f12727;
 }

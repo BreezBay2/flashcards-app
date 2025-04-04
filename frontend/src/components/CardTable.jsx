@@ -39,7 +39,7 @@ const CardTable = ({ deckId }) => {
                             <th>#</th>
                             <th className="expand">Front</th>
                             <th className="expand">Back</th>
-                            <th>Actions</th>
+                            <th> </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -51,7 +51,7 @@ const CardTable = ({ deckId }) => {
                                     <td className="expand">{card.backText}</td>
                                     <td>
                                         <button
-                                            className="action-button"
+                                            className="card-delete-button"
                                             onClick={() => {
                                                 setCardId(card.id);
                                                 setModalOpen(true);
