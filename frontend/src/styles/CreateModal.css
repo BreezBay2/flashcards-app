@@ -29,7 +29,7 @@
 .create-form textarea,
 .create-form select {
     border: 1px solid #7fce80;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 .create-form label {
     margin-top: 5px;

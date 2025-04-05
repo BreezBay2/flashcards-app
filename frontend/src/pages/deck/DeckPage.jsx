@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import React, { useState } from "react";
 import CardTable from "../../components/CardTable";
 import CreateCardModal from "../../components/CreateCardModal";
@@ -33,7 +33,7 @@ const DeckPage = () => {
     });
 
     return (
-        <div className="page">
+        <div className="deck-page">
             <h1>{deck?.name}</h1>
             <div className="deck-page-buttons">
                 <button
@@ -42,7 +42,9 @@ const DeckPage = () => {
                 >
                     Create New Card
                 </button>
-                <button className="study-button">Study</button>
+                <Link to="/study">
+                    <button className="study-button">Study</button>
+                </Link>
             </div>
             {!isLoading && !isRefetching && deck && <CardTable deckId={id} />}
 

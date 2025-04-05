@@ -1,8 +1,8 @@
 .home-page {
+    margin-top: 90px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: #2c5f2d;
 }
 
 .home-create-button {

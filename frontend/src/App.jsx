@@ -44,30 +44,40 @@ function App() {
     return (
         <div className="App">
             {authUser && <Navbar />}
-            <Routes>
-                <Route
-                    path="/"
-                    element={authUser ? <HomePage /> : <Navigate to="/login" />}
-                />
-                <Route
-                    path="/signup"
-                    element={!authUser ? <SignUpPage /> : <Navigate to="/" />}
-                />
-                <Route
-                    path="/login"
-                    element={!authUser ? <LoginPage /> : <Navigate to="/" />}
-                />
-                <Route
-                    path="/deck/:id"
-                    element={authUser ? <DeckPage /> : <Navigate to="/login" />}
-                />
-                <Route
-                    path="/study"
-                    element={
-                        authUser ? <StudyPage /> : <Navigate to="/login" />
-                    }
-                />
-            </Routes>
+            <div className="content">
+                <Routes>
+                    <Route
+                        path="/"
+                        element={
+                            authUser ? <HomePage /> : <Navigate to="/login" />
+                        }
+                    />
+                    <Route
+                        path="/signup"
+                        element={
+                            !authUser ? <SignUpPage /> : <Navigate to="/" />
+                        }
+                    />
+                    <Route
+                        path="/login"
+                        element={
+                            !authUser ? <LoginPage /> : <Navigate to="/" />
+                        }
+                    />
+                    <Route
+                        path="/deck/:id"
+                        element={
+                            authUser ? <DeckPage /> : <Navigate to="/login" />
+                        }
+                    />
+                    <Route
+                        path="/study"
+                        element={
+                            authUser ? <StudyPage /> : <Navigate to="/login" />
+                        }
+                    />
+                </Routes>
+            </div>
         </div>
     );
 }
