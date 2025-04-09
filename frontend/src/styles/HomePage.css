@@ -21,14 +21,11 @@
 }
 
 .home-decks-container {
-    display: flex;
     width: 50%;
-    margin-top: 20px;
-}
+    margin-top: 30px;
 
-.home-decks {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 2rem;
-    width: 100%;
+    justify-content: center;
 }

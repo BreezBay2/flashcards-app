@@ -46,11 +46,9 @@ const HomePage = () => {
 
             {!isLoading && !isRefetching && decks && (
                 <div className="home-decks-container">
-                    <ul className="home-decks">
-                        {decks.map((deck) => (
-                            <DeckCard key={deck.id} deck={deck} />
-                        ))}
-                    </ul>
+                    {decks.map((deck) => (
+                        <DeckCard key={deck.id} deck={deck} />
+                    ))}
                 </div>
             )}
 
