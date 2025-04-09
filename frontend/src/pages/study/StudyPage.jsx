@@ -1,34 +1,100 @@
-import { useQueryClient } from "@tanstack/react-query";
-import React, { useState } from "react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import React, { useEffect, useState } from "react";
 import "../../styles/StudyPage.css";
 import StudyCard from "../../components/StudyCard";
 
 const StudyPage = () => {
-    const [cardIndex, setCardIndex] = useState(0);
     const [answerShown, setAnswerShown] = useState(false);
+    const [cardStack, setCardStack] = useState([]);
 
     const queryClient = useQueryClient();
-
     const cards = queryClient.getQueryData(["cards"]);
 
-    const cardsDeck = [];
+    const {
+        mutate: updateCard,
+        isPending,
+        isError,
+        error,
+    } = useMutation({
+        mutationFn: async ({ cardId, reviewCount, lastReview, nextReview }) => {
+            try {
+                const res = await fetch(`/api/cards/${cardId}`, {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        reviewCount,
+                        lastReview,
+                        nextReview,
+                    }),
+                });
 
-    cards.map((card) => {
-        cardsDeck.push(card);
+                const data = res.json();
+
+                if (!res.ok) {
+                    throw new Error(data.error || "Something went wrong");
+                }
+
+                return data;
+            } catch (error) {
+                throw new Error();
+            }
+        },
     });
 
-    const animateAway = () => {
-        cardIndex = cardIndex + 1;
-        console.log(cardIndex);
+    useEffect(() => {
+        cards.map((card) => {
+            const currentDate = new Date().toISOString();
+            if (card.nextReview < currentDate) {
+                setCardStack((c) => [...c, card]);
+            }
+        });
+    }, []);
+
+    useEffect(() => {
+        console.log(cardStack);
+    }, [cardStack]);
+
+    const handleRepeatCard = () => {
+        const card = cardStack[0];
+        const cardId = card.id;
+        const reviewCount = 0;
+        const lastReview = card.lastReview;
+        const nextReview = card.nextReview;
+
+        setCardStack(cardStack.filter((_, index) => index !== 0));
+        setCardStack((c) => [...c, card]);
+
+        updateCard({ cardId, reviewCount, lastReview, nextReview });
+    };
+
+    const handleReviewCard = () => {
+        const card = cardStack[0];
+        const cardId = card.id;
+        const reviewCount = card.reviewCount + 1;
+        const lastReview = new Date();
+
+        if (card.reviewCount < 7) {
+            var nextReview = new Date();
+            nextReview.setDate(nextReview.getDate() + 1);
+            updateCard({ cardId, reviewCount, lastReview, nextReview });
+        } else {
+            var nextReview = new Date();
+            nextReview.setDate(nextReview.getDate() + 7);
+            updateCard({ cardId, reviewCount, lastReview, nextReview });
+        }
+
+        setCardStack(cardStack.filter((_, index) => index !== 0));
     };
 
     return (
         <div className="study-page">
             <h1>We're going to study here</h1>
-            {cardIndex < cardsDeck.length ? (
+            {cardStack.length > 0 ? (
                 <div className="study-card">
-                    <h1>{cardsDeck[cardIndex].frontText}</h1>
-                    {answerShown && <h1>{cardsDeck[cardIndex].backText}</h1>}
+                    <h1>{cardStack[0].frontText}</h1>
+                    {answerShown && <h1>{cardStack[0].backText}</h1>}
                     {!answerShown && (
                         <button onClick={() => setAnswerShown(true)}>
                             Show Answer
@@ -38,16 +104,16 @@ const StudyPage = () => {
                         <div className="study-review-buttons">
                             <button
                                 onClick={() => {
-                                    setCardIndex((cardIndex) => cardIndex + 1);
                                     setAnswerShown(false);
+                                    handleRepeatCard();
                                 }}
                             >
                                 Repeat
                             </button>
                             <button
                                 onClick={() => {
-                                    setCardIndex((cardIndex) => cardIndex + 1);
                                     setAnswerShown(false);
+                                    handleReviewCard();
                                 }}
                             >
                                 Next
