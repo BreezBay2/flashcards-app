@@ -59,6 +59,10 @@ export const deleteDeck = async (req, res) => {
                 .json({ error: "You are not authorized to delete this deck" });
         }
 
+        await prisma.card.deleteMany({
+            where: { deckId: req.params.id },
+        });
+
         await prisma.deck.delete({
             where: { id: req.params.id },
         });

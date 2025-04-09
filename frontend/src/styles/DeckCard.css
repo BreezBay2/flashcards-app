@@ -10,6 +10,26 @@
     background-color: #a7eca5;
 }
 
+.deckcard-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.deck-delete-button {
+    border: none;
+    background-color: #2c5f2d;
+    border-radius: 8px;
+    padding: 10px 10px;
+    color: white;
+}
+
+.deck-delete-button:hover {
+    cursor: pointer;
+    background-color: #4f9250;
+}
+
 .deck-link {
     text-decoration: none;
 }
