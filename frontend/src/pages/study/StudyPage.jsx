@@ -2,6 +2,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import React, { useEffect, useState } from "react";
 import "../../styles/StudyPage.css";
 import StudyCard from "../../components/StudyCard";
+import Stopwatch from "../../components/Stopwatch";
 
 const StudyPage = () => {
     const [answerShown, setAnswerShown] = useState(false);
@@ -90,6 +91,7 @@ const StudyPage = () => {
 
     return (
         <div className="study-page">
+            {cardStack.length > 0 && <Stopwatch />}
             {cardStack.length > 0 ? (
                 <div className="study-card">
                     <h1>{cardStack[0].frontText}</h1>
