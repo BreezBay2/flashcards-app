@@ -24,7 +24,6 @@ function App() {
                     throw new Error(data.error || "Something went wrong");
                 }
 
-                console.log("User: ", data);
                 return data;
             } catch (error) {
                 throw new Error(error);
