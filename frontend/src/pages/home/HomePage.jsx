@@ -34,15 +34,16 @@ const HomePage = () => {
 
     return (
         <div className="home-page">
-            <h1>HomePage</h1>
             <h2>Welcome back {authUser?.username}</h2>
-            <h3>Decks</h3>
-            <button
-                className="home-create-button"
-                onClick={() => setModalOpen(true)}
-            >
-                Create New Deck
-            </button>
+            <div className="home-header">
+                <h1>Decks</h1>
+                <button
+                    className="home-create-button"
+                    onClick={() => setModalOpen(true)}
+                >
+                    Create New Deck
+                </button>
+            </div>
 
             {!isLoading && !isRefetching && decks && (
                 <div className="home-decks-container">

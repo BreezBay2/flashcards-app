@@ -111,7 +111,10 @@ export const getAllDecks = async (req, res) => {
             return res.status(404).json({ error: "User not found" });
         }
 
-        const decks = await prisma.deck.findMany({ where: { userId } });
+        const decks = await prisma.deck.findMany({
+            where: { userId },
+            orderBy: { lastOpened: "desc" },
+        });
 
         if (decks.length === 0) {
             return res.status(200).json([]);

@@ -2,6 +2,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    min-height: 100vh;
+    width: 100%;
 }
 
 .login-container {
@@ -9,9 +11,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 40vw;
-    height: 40vw;
-    padding: 20px;
+    width: 30%;
+    max-width: 500px;
+    padding: 50px;
     border-radius: 20px;
     background-color: white;
 }
@@ -19,7 +21,7 @@
 .login-form {
     display: flex;
     flex-direction: column;
-    width: 60%;
+    width: 100%;
     font-size: large;
     color: rgb(73, 73, 73);
 }
@@ -55,7 +57,7 @@
 .signup-link {
     display: flex;
     flex-direction: column;
-    width: 60%;
+    width: 100%;
     margin-top: 20px;
     color: #494949;
 }

@@ -2,9 +2,12 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/DeckCard.css";
 import DeleteDeckModal from "./DeleteDeckModal";
+import { formatDeckDate } from "../utils/dateFormatter";
 
 const DeckCard = ({ deck: { id, name, description, lastOpened } }) => {
     const [modalOpen, setModalOpen] = useState(false);
+
+    const formattedDate = formatDeckDate(lastOpened);
 
     const handleDeleteButton = (e) => {
         e.preventDefault();
@@ -16,7 +19,7 @@ const DeckCard = ({ deck: { id, name, description, lastOpened } }) => {
             <Link to={`/deck/${id}`} className="deck-link">
                 <div className="deckcard">
                     <div className="deckcard-header">
-                        <h3>{name}</h3>
+                        <h2>{name}</h2>
                         <button
                             className="deck-delete-button"
                             onClick={handleDeleteButton}
@@ -24,8 +27,8 @@ const DeckCard = ({ deck: { id, name, description, lastOpened } }) => {
                             D
                         </button>
                     </div>
-                    <p>{description}</p>
-                    <p>{lastOpened}</p>
+                    <p className="deckcard-description">{description}</p>
+                    <p className="deckcard-timestamp">{formattedDate}</p>
                 </div>
             </Link>
 

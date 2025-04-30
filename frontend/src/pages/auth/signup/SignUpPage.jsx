@@ -96,22 +96,29 @@ const SignUpPage = () => {
                         onChange={handleInputChange}
                         value={formData.fullname}
                     />
-                    <label>Password</label>
-                    <input
-                        type="password"
-                        placeholder="Password"
-                        name="password"
-                        onChange={handleInputChange}
-                        value={formData.password}
-                    />
-                    <label>Confirm Password</label>
-                    <input
-                        type="password"
-                        placeholder="Confirm Password"
-                        name="confirmPassword"
-                        onChange={handleInputChange}
-                        value={formData.confirmPassword}
-                    />
+                    <div className="signup-passwords">
+                        <div className="signup-password">
+                            <label>Password</label>
+                            <input
+                                type="password"
+                                placeholder="Password"
+                                name="password"
+                                onChange={handleInputChange}
+                                value={formData.password}
+                            />
+                        </div>
+                        <div className="signup-password">
+                            <label>Confirm Password</label>
+                            <input
+                                type="password"
+                                placeholder="Confirm Password"
+                                name="confirmPassword"
+                                onChange={handleInputChange}
+                                value={formData.confirmPassword}
+                            />
+                        </div>
+                    </div>
+
                     <button>{isPending ? "Is Loading..." : "Sign Up"}</button>
                     {isError && <p>{error.message}</p>}
                 </form>
