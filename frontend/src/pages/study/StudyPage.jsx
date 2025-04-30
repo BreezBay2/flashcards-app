@@ -90,13 +90,16 @@ const StudyPage = () => {
 
     return (
         <div className="study-page">
-            <h1>We're going to study here</h1>
             {cardStack.length > 0 ? (
                 <div className="study-card">
                     <h1>{cardStack[0].frontText}</h1>
+                    {answerShown && <div className="study-divider"></div>}
                     {answerShown && <h1>{cardStack[0].backText}</h1>}
                     {!answerShown && (
-                        <button onClick={() => setAnswerShown(true)}>
+                        <button
+                            className="show-answer-button"
+                            onClick={() => setAnswerShown(true)}
+                        >
                             Show Answer
                         </button>
                     )}

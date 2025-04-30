@@ -1,6 +1,7 @@
 .table-container {
     margin-top: 30px;
     width: 100%;
+    padding: 0px 10px;
 }
 
 .table {
@@ -10,10 +11,14 @@
     background-color: white;
     border-radius: 10px;
     white-space: nowrap;
-    width: 70em;
-    max-width: 80%;
+    width: 100%;
     margin: auto;
     overflow-x: auto;
+    color: #2c5f2d;
+}
+
+.table th {
+    font-size: 20px;
 }
 
 .table th,
@@ -26,6 +31,7 @@
     border-top: 0.5px solid #ddd;
     overflow: hidden;
     text-overflow: ellipsis;
+    max-width: 100px;
 }
 
 table tbody tr:hover {
@@ -37,13 +43,15 @@ table tbody tr:hover {
 }
 
 .card-delete-button {
-    padding: 8px 12px;
-    font-size: medium;
-    font-family: "Nunito";
-    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    width: 40px;
+    height: 40px;
     background-color: #f12727;
-    border-radius: 12px;
-    color: white;
+    padding: 10px;
+    border-radius: 10px;
 }
 
 .card-delete-button:hover {

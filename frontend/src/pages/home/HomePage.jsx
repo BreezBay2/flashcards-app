@@ -34,7 +34,7 @@ const HomePage = () => {
 
     return (
         <div className="home-page">
-            <h2>Welcome back {authUser?.username}</h2>
+            <h2>Welcome back {authUser?.username}!</h2>
             <div className="home-header">
                 <h1>Decks</h1>
                 <button

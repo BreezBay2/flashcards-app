@@ -45,6 +45,7 @@ export const getAllCards = async (req, res) => {
 
         const cards = await prisma.card.findMany({
             where: { deckId: req.params.id },
+            orderBy: { nextReview: "desc" },
         });
 
         if (cards.length === 0) {

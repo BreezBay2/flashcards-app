@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import React, { useState } from "react";
 import "../styles/CardTable.css";
 import DeleteCardModal from "./DeleteCardModal";
+import { FaRegTrashAlt } from "react-icons/fa";
 
 const CardTable = ({ deckId }) => {
     const [modalOpen, setModalOpen] = useState(false);
@@ -47,18 +48,18 @@ const CardTable = ({ deckId }) => {
                             return (
                                 <tr key={index}>
                                     <td>{index + 1}</td>
-                                    <td className="expand">{card.frontText}</td>
+                                    <td>{card.frontText}</td>
                                     <td className="expand">{card.backText}</td>
                                     <td>
-                                        <button
+                                        <div
                                             className="card-delete-button"
                                             onClick={() => {
                                                 setCardId(card.id);
                                                 setModalOpen(true);
                                             }}
                                         >
-                                            Delete
-                                        </button>
+                                            <FaRegTrashAlt />
+                                        </div>
                                     </td>
                                 </tr>
                             );

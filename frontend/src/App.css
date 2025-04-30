@@ -1,6 +1,7 @@
 .app {
     display: flex;
     justify-content: center;
+    background-color: #eaf8e0;
 }
 
 .loading {

@@ -36,15 +36,15 @@ const DeckPage = () => {
         <div className="deck-page">
             <h1>{deck?.name}</h1>
             <div className="deck-page-buttons">
+                <Link to="/study">
+                    <button className="study-button">Study</button>
+                </Link>
                 <button
                     className="create-card-button"
                     onClick={() => setModalOpen(true)}
                 >
                     Create New Card
                 </button>
-                <Link to="/study">
-                    <button className="study-button">Study</button>
-                </Link>
             </div>
             {!isLoading && !isRefetching && deck && <CardTable deckId={id} />}
 

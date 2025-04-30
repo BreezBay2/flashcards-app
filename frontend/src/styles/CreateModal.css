@@ -13,26 +13,36 @@
 
 .create-modal {
     border-radius: 10px;
-    padding: 2rem;
+    padding: 30px 40px;
     background-color: white;
-    height: 14rem;
-    width: 20rem;
+    max-width: 400px;
+    width: 40%;
     color: #2c5f2d;
 }
 
 .create-form {
     display: flex;
     flex-direction: column;
+    gap: 2px;
 }
 
 .create-form input,
 .create-form textarea,
 .create-form select {
+    padding: 5px;
     border: 1px solid #7fce80;
     border-radius: 5px;
 }
+
+.create-form textarea {
+    resize: none;
+    height: 100px;
+}
+
 .create-form label {
-    margin-top: 5px;
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: 600;
 }
 
 .create-form button {
