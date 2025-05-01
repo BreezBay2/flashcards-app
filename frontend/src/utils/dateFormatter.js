@@ -25,3 +25,14 @@ export const formatDeckDate = (updatedAt) => {
         return "Just now";
     }
 };
+
+export const isToday = (date) => {
+    const today = new Date();
+    const dateToCheck = new Date(date);
+
+    return (
+        dateToCheck.getUTCFullYear() === today.getUTCFullYear() &&
+        dateToCheck.getUTCMonth() === today.getUTCMonth() &&
+        dateToCheck.getUTCDate() === today.getUTCDate()
+    );
+};

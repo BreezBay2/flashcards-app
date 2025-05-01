@@ -30,6 +30,10 @@
     padding: 40px;
 }
 
+.study-card h1 {
+    font-weight: 500;
+}
+
 .study-divider {
     width: 100%;
     background-color: rgba(0, 0, 0, 0.2);

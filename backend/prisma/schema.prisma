@@ -43,10 +43,10 @@ model Card {
   backText String
   createdAt DateTime @default(now())
 
-  lastReview DateTime @default(now())
+  lastReview DateTime?
   nextReview DateTime @default(now())
   reviewCount Int @default(0)
-  interval Int @default(0)
+  interval Int @default(1)
   easeFactor Float @default(2.5)
 
   deckId String

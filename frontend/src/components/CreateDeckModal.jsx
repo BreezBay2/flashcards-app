@@ -68,15 +68,15 @@ const CreateDeckModal = ({ closeModal }) => {
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
                     />
-                    <label>Type</label>
+                    <label>Repetition Type</label>
                     <select
                         name="studyType"
                         value={studyType}
                         onChange={(e) => setStudyType(e.target.value)}
                     >
-                        <option>No</option>
-                        <option>SRS</option>
-                        <option>Daily</option>
+                        <option value="No">No</option>
+                        <option value="SRS">Spaced Repetition</option>
+                        <option value="daily">Daily</option>
                     </select>
                     <button type="submit" onClick={handleSubmit}>
                         {isPending ? "Creating Deck..." : "Create Deck"}
