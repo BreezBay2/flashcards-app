@@ -54,5 +54,5 @@ This app uses a random interval fuzz to combat the clumping of cards. It randomi
 \text{Fuzz Factor}=0.05 + x \cdot 0.1 \quad \text{} \text{} \text{} \text{where} \text{} \text{} \text{} \quad x\sim\mathcal{U}(0,1)
 ```
 ```math
-\text{Final Interval}=\text{Interval} - \text{Interval} \cdot \text{Fuzz Factor} \cdot \pm1
+\text{Final Interval}=\text{Interval} - \text{Interval} \cdot \text{Fuzz Factor} \cdot ±1
 ```
