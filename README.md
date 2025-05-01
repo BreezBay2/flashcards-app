@@ -35,7 +35,7 @@ npm start
 
 # The SM-2 Algorithm
 
-This app uses a simplified and slightly modified version of the SM-2 spaced repetition algorithm. The algorithm uses a **Quality Score** (0-5), based on how easily the user recalls an answer, to update the card’s **Ease Factor** — a measure variable of how easily the user remembers that card over time (it starts at 2.5) — and recalculates the **Interval**, which determines the next review date. This dynamic adjustment ensures that well-remembered material is reviewed less often, while more difficult material receives more frequent reinforcement. However, to keep things as simple as possible, this app provides only two values to assess the quality score. The first 3 successful reviews also set predetermined intervals and do not adjust the ease factor (a kind of learning phase).
+This app uses a simplified and slightly modified version of the SM-2 spaced repetition algorithm. The algorithm uses a **Quality Score** (0-5), based on how easily the user recalls an answer, to update the card’s **Ease Factor** — a measure of how easily the user remembers that card over time (it starts at 2.5) — and recalculates the **Interval**, which determines the next review date. This dynamic adjustment ensures that well-remembered material is reviewed less often, while more difficult material receives more frequent reinforcement. However, to keep things as simple as possible, this app provides only two values to assess the quality score. The first 3 successful reviews also set predetermined intervals and do not adjust the ease factor (a kind of learning phase).
 
 ## How the values are calculated
 ### Interval Recalculation:
