@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import "../styles/Stopwatch.css";
+import "../styles/components/Stopwatch.css";
 import { FaPlay, FaPause, FaReply } from "react-icons/fa";
 
 const Stopwatch = () => {

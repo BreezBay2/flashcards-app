@@ -39,7 +39,11 @@ table tbody tr:hover {
 }
 
 .expand {
-    width: 50%;
+    width: 40%;
+}
+
+.fixed {
+    width: 20%;
 }
 
 .card-delete-button {

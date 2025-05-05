@@ -231,7 +231,6 @@ const StudyPage = () => {
     return (
         <div className="study-page">
             {cardStack.length > 0 && <Stopwatch />}
-            {cardStack.length > 0 && <h1>Repetition Type: {repetitionType}</h1>}
             {cardStack.length > 0 ? (
                 <div className="study-card">
                     <h1>{cardStack[0].frontText}</h1>

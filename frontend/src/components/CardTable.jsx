@@ -1,8 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useState } from "react";
-import "../styles/CardTable.css";
+import "../styles/components/CardTable.css";
 import DeleteCardModal from "./DeleteCardModal";
 import { FaRegTrashAlt } from "react-icons/fa";
+import {
+    formatDeckDate,
+    formatDueDate,
+    isCardDueToday,
+} from "../utils/dateFormatter";
 
 const CardTable = ({ deckId }) => {
     const [modalOpen, setModalOpen] = useState(false);
@@ -40,6 +45,7 @@ const CardTable = ({ deckId }) => {
                             <th>#</th>
                             <th className="expand">Front</th>
                             <th className="expand">Back</th>
+                            <th className="fixed">Due</th>
                             <th> </th>
                         </tr>
                     </thead>
@@ -50,6 +56,11 @@ const CardTable = ({ deckId }) => {
                                     <td>{index + 1}</td>
                                     <td>{card.frontText}</td>
                                     <td className="expand">{card.backText}</td>
+                                    <td>
+                                        {isCardDueToday(card.nextReview)
+                                            ? "Today"
+                                            : formatDueDate(card.nextReview)}
+                                    </td>
                                     <td>
                                         <div
                                             className="card-delete-button"

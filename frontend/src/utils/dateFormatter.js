@@ -36,3 +36,20 @@ export const isToday = (date) => {
         dateToCheck.getUTCDate() === today.getUTCDate()
     );
 };
+
+export const isCardDueToday = (date) => {
+    const today = new Date();
+    const dateToCheck = new Date(date);
+
+    return (
+        dateToCheck.getUTCFullYear() <= today.getUTCFullYear() &&
+        dateToCheck.getUTCMonth() <= today.getUTCMonth() &&
+        dateToCheck.getUTCDate() <= today.getUTCDate()
+    );
+};
+
+export const formatDueDate = (date) => {
+    const dateToCheck = new Date(date);
+
+    return dateToCheck.toISOString().substring(0, 10);
+};
