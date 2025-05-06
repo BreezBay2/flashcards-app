@@ -5,6 +5,9 @@ Flashcards is an app that can help you learn and remember information by studyin
 2. Test yourself once per day.
 3. Anki-style Spaced Repetition.
 
+![Screenshot 2025-05-06 at 13-43-04 Flashcards](https://github.com/user-attachments/assets/46c172fe-1bd4-4bd6-9b45-9f28acfb773d)
+
+
 ### Technologies used in this project:
 - Tech Stack: React, Node.js, Express, Prisma, PostgreSQL
 - User Authentication with JSON Web Token (JWT)
@@ -51,7 +54,7 @@ This app uses a simplified and slightly modified version of the SM-2 spaced repe
 ### Fuzz
 This app uses a random interval fuzz to combat the clumping of cards. It randomizes slightly (±5-15%) to prevent a bunch of reviews from landing on the same day and spread them out a little bit.
 ```math
-\text{Fuzz Factor}=0.05 + x \cdot 0.1 \quad \text{} \text{} \text{} \text{where} \text{} \text{} \text{} \quad x\sim\mathcal{U}(0,1)
+\text{Fuzz Factor}=0.05 + x \cdot 0.1 \quad \quad \text{} \text{} \text{} \text{} \text{where} \text{} \text{} x\sim\mathcal{U}(0,1)
 ```
 ```math
 \text{Final Interval}=\text{Interval} - \text{Interval} \cdot \text{Fuzz Factor} \cdot ±1
