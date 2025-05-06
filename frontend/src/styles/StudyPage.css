@@ -5,7 +5,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 10%;
+    padding-top: 150px;
     color: #2c5f2d;
 }
 
@@ -17,7 +17,7 @@
 }
 
 .study-card {
-    margin-top: 100px;
+    margin-top: 50px;
     width: 40%;
     min-width: 400px;
     max-width: 700px;
@@ -47,8 +47,8 @@
 }
 
 .study-review-buttons {
-    padding: 0px 10px;
-    margin-top: 30px;
+    padding: 0px 20px;
+    margin-top: 40px;
     width: 100%;
     display: flex;
     justify-content: space-between;
